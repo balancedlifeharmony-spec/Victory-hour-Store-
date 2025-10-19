@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Victory Hour $10 Store</title>
+  <link rel="manifest" href="manifest.json" />
+  <style>
+    :root {
+      --gold: #f5c542;
+      --bg: #000;
+      --text: #fff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    body { background: var(--bg); color: var(--text); overflow: hidden; }
+    header { text-align: center; padding: 2rem 1rem; }
+    header h1 { font-size: 2rem; color: var(--gold); letter-spacing: 1px; }
+    header p { font-size: 1rem; opacity: 0.8; }
+    .store {
+      display: flex; transition: transform 0.5s ease;
+      width: 100vw; height: calc(100vh - 160px);
+    }
+    .slide {
+      min-width: 100%; padding: 2rem; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+    }
+    .slide h2 { color: var(--gold); margin-bottom: 1rem; font-size: 1.5rem; }
+    .slide p { max-width: 500px; margin-bottom: 1.5rem; line-height: 1.6; }
+    .buy-btn {
+      background: var(--gold); color: #000; border: none; padding: 0.8rem 2rem;
+      border-radius: 999px; font-weight: 600; cursor: pointer; text-decoration: none;
+    }
+    .nav { position: fixed; top: 50%; width: 100%; display: flex; justify-content: space-between; pointer-events: none; }
+    .nav button {
+      pointer-events: all; background: rgba(245,197,66,0.2);
+      border: 1px solid var(--gold); color: var(--gold);
+      font-size: 2rem; border-radius: 50%; width: 50px; height: 50px;
+      cursor: pointer; transition: background 0.3s;
+    }
+    .nav button:hover { background: var(--gold); color: #000; }
+    footer {
+      text-align: center; font-size: 0.9rem; padding: 1rem; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .badge {
+      position: fixed; bottom: 90px; right: 20px; background: var(--gold);
+      color: #000; padding: 0.5rem 1rem; border-radius: 999px;
+      font-weight: bold; box-shadow: 0 0 15px var(--gold);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Victory Hour $10 Store</h1>
+    <p>10 Digital Tools that Change Lives — Every Purchase Helps Feed the Hungry 🕊️</p>
+  </header>
+
+  <div class="store" id="store">
+    <div class="slide"><h2>Pocket Lawyer GPT™</h2><p>Instant legal documents in 25+ languages. Affordable justice for all.</p><a class="buy-btn" href="https://paypal.me/victoryhourstore/10" target="_blank">Buy for $10</a></div>
+    <div class="slide"><h2>Career Application Assistant GPT™</h2><p>Build your resume, prep for interviews, and land the job — fast.</p><a class="buy-btn" href="https://paypal.me/victoryhourstore/10" target="_blank">Buy for $10</a></div>
+    <div class="slide"><h2>Mystic Mirror GPT™</h2><p>See the truth reflected — your AI-guided spiritual self-discovery tool.</p><a class="buy-btn" href="https://paypal.me/victoryhourstore/10" target="_blank">Buy for $10</a></div>
+    <div class="slide"><h2>MediMatch GPT™</h2><p>Check drug and supplement interactions safely before you pop.</p><a class="buy-btn" href="https://paypal.me/victoryhourstore/10" target="_blank">Buy for $10</a></div>
+    <div class="slide"><h2>HealingTraits™ App</h2><p>50 positive traits to heal toxic patterns — multilingual & journaling-ready.</p><a class="buy-btn" href="https://paypal.me/victoryhourstore/10" target="_blank">Buy for $10</a></div>
+    <div class="slide"><h2>ShopSmart GPT™</h2><p>Find the best grocery prices near you and save hundreds each year.</p><a class="buy-btn" href="https://paypal.me/victoryhourstore/10" target="_blank">Buy for $10</a></div>
+    <div class="slide"><h2>$0-$40K AI Hustler GPT™</h2><p>Learn how to turn AI tools into real income streams with this guide.</p><a class="buy-btn" href="https://paypal.me/victoryhourstore/10" target="_blank">Buy for $10</a></div>
+    <div class="slide"><h2>Soul Mapping GPT™</h2><p>Explore your psychological and spiritual design — discover your path.</p><a class="buy-btn" href="https://paypal.me/victoryhourstore/10" target="_blank">Buy for $10</a></div>
+    <div class="slide"><h2>Budgeting & Finance Course</h2><p>Master the 3-2-1 Wealth System — control your money and future.</p><a class="buy-btn" href="https://paypal.me/victoryhourstore/10" target="_blank">Buy for $10</a></div>
+    <div class="slide"><h2>Children’s Book Bundle</h2><p>“The Book That Gave Gold” + “The Lemonade Stand That Gave Back.”</p><a class="buy-btn" href="https://paypal.me/victoryhourstore/10" target="_blank">Buy for $10</a></div>
+  </div>
+
+  <div class="nav">
+    <button id="prev">&#8592;</button>
+    <button id="next">&#8594;</button>
+  </div>
+
+  <div class="badge">10% To Feed The Hungry ❤️</div>
+
+  <footer>
+    <p><strong>Built by Victory Hour Multimedia Inc.</strong><br>
+    🌐 www.victoryhourmedia.com | ✉️ info@victoryhourmedia.com<br>
+    We build brands that lead — from strategy to design to digital presence.</p>
+  </footer>
+
+  <script>
+    let index = 0;
+    const store = document.getElementById('store');
+    const slides = document.querySelectorAll('.slide');
+    function showSlide(i) {
+      if (i < 0) index = slides.length - 1;
+      else if (i >= slides.length) index = 0;
+      else index = i;
+      store.style.transform = `translateX(-${index * 100}vw)`;
+    }
+    document.getElementById('prev').onclick = () => showSlide(index - 1);
+    document.getElementById('next').onclick = () => showSlide(index + 1);
+    // PWA registration
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
